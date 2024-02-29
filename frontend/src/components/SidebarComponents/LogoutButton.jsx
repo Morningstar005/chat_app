@@ -1,11 +1,19 @@
 import { CiLogout } from "react-icons/ci";
+import useLogout from "../../hooks/useLogout";
 
 const LogoutButton = () => {
+
+  const {loading,logout} = useLogout();
   return (
     <div className='mt-auto'>
-      <CiLogout className="w-6 h-6 text-blue-950 cursor-pointer"/>
+      {
+        !loading ?(
+          <CiLogout className="w-6 h-6 text-blue-950 cursor-pointer" onClick={logout}/>
+        ):(
+          <span className="loading loading-spinner"></span>
+        )
+      }
     </div>
-
   )
 }
 
